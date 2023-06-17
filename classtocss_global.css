@@ -3,6 +3,9 @@
  * 需要手动引入到全局生效的位置，如index.html
  */
 .column { display: flex; flex-direction: column; }
+.mid-between { justify-content: space-between; }
+.mid-around { justify-content: space-around; }
+.mid-evenly { justify-content: space-evenly; }
 .table { display: table; }
 /* apply result */
 .app-reset { padding:  0px;  margin:  0px;  box-sizing: content-box;  }
