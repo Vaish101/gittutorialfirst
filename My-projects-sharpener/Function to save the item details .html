@@ -1,0 +1,36 @@
+// Function to save the item details in the table
+function saveItemDetails(item) {
+  // Get the existing item details from local storage
+  const savedItems = localStorage.getItem('items');
+
+  // Parse the existing item details into an array or create an empty array if it doesn't exist
+  const items = savedItems ? JSON.parse(savedItems) : [];
+
+  // Add the new item to the array
+  items.push(item);
+
+  // Store the updated item details in local storage
+  localStorage.setItem('items', JSON.stringify(items));
+}
+
+// Modify the addItem function to save the item details in the table
+function addItem(event) {
+  event.preventDefault();
+
+  const itemName = document.getElementById('item-name').value;
+  const itemDescription = document.getElementById('item-description').value;
+  const itemPrice = document.getElementById('item-price').value;
+  const itemQuantity = document.getElementById('item-quantity').value;
+
+  const newItem = {
+    name: itemName,
+    description: itemDescription,
+    price: itemPrice,
+    quantity: itemQuantity,
+  };
+
+  addItemToList(newItem);
+  saveItemDetails(newItem);
+
+  clearFormFields();
+}

@@ -1,0 +1,72 @@
+<div id="dashboard">
+  <h1>Seller's Dashboard</h1>
+  <div id="item-list">
+    <!-- Display the list of items here -->
+  </div>
+  <div id="add-item-form">
+    <h2>Add Item</h2>
+    <input type="text" id="item-name" placeholder="Item Name">
+    <textarea id="item-description" placeholder="Item Description"></textarea>
+    <input type="number" id="item-price" placeholder="Item Price">
+    <input type="number" id="item-quantity" placeholder="Item Quantity">
+    <button id="add-item-btn">Add Item</button>
+  </div>
+</div>
+
+<script>
+const itemList = document.getElementById('item-list');
+const addItemForm = document.getElementById('add-item-form');
+const addItemButton = document.getElementById('add-item-btn');
+
+// Add an event listener to the "Add Item" button
+addItemButton.addEventListener('click', addItem);
+
+function addItem(event) {
+  event.preventDefault();
+
+  // Retrieve the input values from the form
+  const itemName = document.getElementById('item-name').value;
+  const itemDescription = document.getElementById('item-description').value;
+  const itemPrice = document.getElementById('item-price').value;
+  const itemQuantity = document.getElementById('item-quantity').value;
+
+  // Create a new item object with the input values
+  const newItem = {
+    name: itemName,
+    description: itemDescription,
+    price: itemPrice,
+    quantity: itemQuantity,
+  };
+
+  // Call a function to add the new item to the item list
+  addItemToList(newItem);
+
+  // Clear the form fields
+  clearFormFields();
+}
+
+function addItemToList(item) {
+  // Create a new item element
+  const itemElement = document.createElement('div');
+  itemElement.classList.add('item');
+
+  // Set the innerHTML of the item element with the item details
+  itemElement.innerHTML = `
+    <h3>${item.name}</h3>
+    <p>Description: ${item.description}</p>
+    <p>Price: ${item.price}</p>
+    <p>Quantity: ${item.quantity}</p>
+  `;
+
+  // Append the item element to the item list
+  itemList.appendChild(itemElement);
+}
+
+function clearFormFields() {
+  // Clear the form fields
+  document.getElementById('item-name').value = '';
+  document.getElementById('item-description').value = '';
+  document.getElementById('item-price').value = '';
+  document.getElementById('item-quantity').value = '';
+}
+</script>
